@@ -2,12 +2,12 @@ function Set-MemoryMappedFileString {
 <#
 .SYNOPSIS
 
-Write the contents of a string in a memory mapped file.
+Writes the contents of a string in a memory mapped file.
 
 
 .DESCRIPTION
 
-Write the contents of a string in a memory mapped file.
+Writes the contents of a string in a memory mapped file.
 
 The memory mapped file as specified by 'MapName' will not be locked for 
 writing. You have to perform a custom locking (e.g. via a Mutex or 
@@ -188,8 +188,8 @@ if($MyInvocation.ScriptName) { Export-ModuleMember -Function Set-MemoryMappedFil
 # SIG # Begin signature block
 # MIILewYJKoZIhvcNAQcCoIILbDCCC2gCAQExCzAJBgUrDgMCGgUAMGkGCisGAQQB
 # gjcCAQSgWzBZMDQGCisGAQQBgjcCAR4wJgIDAQAABBAfzDtgWUsITrck0sYpfvNR
-# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQULAiHMMUbcw6xSdDV4GXdkkk3
-# f12gggjdMIIEKDCCAxCgAwIBAgILBAAAAAABL07hNVwwDQYJKoZIhvcNAQEFBQAw
+# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUYejMxgLoRPKA//JrLDnDVAZM
+# VgGgggjdMIIEKDCCAxCgAwIBAgILBAAAAAABL07hNVwwDQYJKoZIhvcNAQEFBQAw
 # VzELMAkGA1UEBhMCQkUxGTAXBgNVBAoTEEdsb2JhbFNpZ24gbnYtc2ExEDAOBgNV
 # BAsTB1Jvb3QgQ0ExGzAZBgNVBAMTEkdsb2JhbFNpZ24gUm9vdCBDQTAeFw0xMTA0
 # MTMxMDAwMDBaFw0xOTA0MTMxMDAwMDBaMFExCzAJBgNVBAYTAkJFMRkwFwYDVQQK
@@ -241,11 +241,11 @@ if($MyInvocation.ScriptName) { Export-ModuleMember -Function Set-MemoryMappedFil
 # Q29kZVNpZ25pbmcgQ0EgLSBHMgISESFgd9/aXcgt4FtCBtsrp6UyMAkGBSsOAwIa
 # BQCgeDAYBgorBgEEAYI3AgEMMQowCKACgAChAoAAMBkGCSqGSIb3DQEJAzEMBgor
 # BgEEAYI3AgEEMBwGCisGAQQBgjcCAQsxDjAMBgorBgEEAYI3AgEVMCMGCSqGSIb3
-# DQEJBDEWBBQki2sUz27ogGCcl/mzdkHE+64HTjANBgkqhkiG9w0BAQEFAASCAQCR
-# q/LuOiGZvO4EwfQ2S++07XOaGrdWxgk0iykyd3+q1/VHG5opyuP4C+d7bb+D2LDz
-# cYR6XjC6AmjnyILtmSTf/K1gmFBUae2t70wXFTASEJIcRRJrOHVhLNL4tuxWbt0U
-# 44FzHGBdinZTjJWcB2pjlcKWomusQUqfumwpUOePkay5mFshJaDYVN8Pe3y9vec5
-# CXWhABfMnfvoyvOusc9Zza0b5HJaacThG7pQbd6kIBwu8jUIPG6q8/lWp9amBbf+
-# /A9Psrm+f+20IePZ9r8/pFPfi5aKHuB6MaKkLFcW6BmEj1Uhy1YsnIKZkvLPocE1
-# 1cQKdwtUgcHiQTnbRhjy
+# DQEJBDEWBBRIVBKjP54DUIhcnSUvBAo4KQHb6zANBgkqhkiG9w0BAQEFAASCAQAI
+# hoEK30UKUVgsbKEYZujIopHdR/tAjxqRKhTjF80DZwKLevfc6Mce/1pPHSvlKAUf
+# fTPCOGtCubmQddstPNH6G+0xXePraNcRalopNv1oSWigqbxH1B9V6jXJusUmSZfX
+# olWnP6Ur3uBw4nxk/GdIV1QZFqMenbs7uAlGT/vHeAS/kc6U4L6agNbjaol8GaMc
+# uV7zufD96dOpgLAVLOFGgq2zzcyOvuny8d278gerX+peHDZtXiu01AEPPE1b1SbX
+# HWKSm+68LLM6wZcLVSf5utD0U4DjWMv2dT5btZ5l/ZNOIsV3jtcwz1BNdct+Zl/h
+# 3Ijx2blsBatM9COuqdNX
 # SIG # End signature block
