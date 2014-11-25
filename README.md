@@ -5,7 +5,7 @@ Module: biz.dfch.PS.System.IO
 
 d-fens GmbH, General-Guisan-Strasse 6, CH-6300 Zug, Switzerland
 
-This Microsoft PowerShell module contains Cmdlets to perform read and write action to memory mapped files.
+This Microsoft PowerShell module contains Cmdlets to perform read and write actions to memory mapped files.
 
 You can also download this module via [NuGet](http://nuget.org) with [Install-Package biz.dfch.PS.System.IO](https://www.nuget.org/packages/biz.dfch.PS.System.IO/)
 
