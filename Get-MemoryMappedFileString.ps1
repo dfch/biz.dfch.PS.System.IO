@@ -20,10 +20,15 @@ $MapName = 'myMemoryMappedFile';
 $Content = 'Edgar Schnittenfittich';
 $mmf = Set-MemoryMappedFileString -MapName $MapName -Content $Content -Global;
 $mmf;
+SafeMemoryMappedFileHandle
+--------------------------
+Microsoft.Win32.SafeHandles.SafeMemoryMappedFileHandle
 
 Get-MemoryMappedFileString -MapName $MapName -Size 100000 -Global
+Edgar Schnittenfittich
 
 Set-MemoryMappedFileString -Close $mmf
+True
 
 In this example a memory mapped called 'myMemoryMappedFile' file is created 
 in the global namespace (visible across terminal sessions on the same machine). 
@@ -49,15 +54,18 @@ See module manifest for dependencies and further requirements.
 [OutputType([string])]
 Param 
 (
+	# Specifies the name of the memory mapped file
 	[Parameter(Mandatory = $true, Position = 0)]
 	[alias("m")]
 	[alias("map")]
-	[string] $MapName = $(throw("You must specify a string for this parameter."))
+	[string] $MapName
 	, 
+	# Speficies the maximum size of the content to retrieve from the memory mapped file
 	[Parameter(Mandatory = $false, Position = 1)]
 	[alias("s")]
 	[int] $Size = 1024*1024-4
 	, 
+	# Specifies if the memory mapped file should reside in the global namespace
 	[Parameter(Mandatory = $false, Position = 2)]
 	[alias("g")]
 	[switch] $Global = $false
@@ -192,8 +200,8 @@ if($MyInvocation.ScriptName) { Export-ModuleMember -Function Get-MemoryMappedFil
 # SIG # Begin signature block
 # MIIW3AYJKoZIhvcNAQcCoIIWzTCCFskCAQExCzAJBgUrDgMCGgUAMGkGCisGAQQB
 # gjcCAQSgWzBZMDQGCisGAQQBgjcCAR4wJgIDAQAABBAfzDtgWUsITrck0sYpfvNR
-# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUdd8klavZMPdfnWJUfdSQuFjT
-# pL6gghGYMIIEFDCCAvygAwIBAgILBAAAAAABL07hUtcwDQYJKoZIhvcNAQEFBQAw
+# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUqddBEB3/XtKGZYsaT9cBwqEN
+# xqagghGYMIIEFDCCAvygAwIBAgILBAAAAAABL07hUtcwDQYJKoZIhvcNAQEFBQAw
 # VzELMAkGA1UEBhMCQkUxGTAXBgNVBAoTEEdsb2JhbFNpZ24gbnYtc2ExEDAOBgNV
 # BAsTB1Jvb3QgQ0ExGzAZBgNVBAMTEkdsb2JhbFNpZ24gUm9vdCBDQTAeFw0xMTA0
 # MTMxMDAwMDBaFw0yODAxMjgxMjAwMDBaMFIxCzAJBgNVBAYTAkJFMRkwFwYDVQQK
@@ -291,25 +299,25 @@ if($MyInvocation.ScriptName) { Export-ModuleMember -Function Get-MemoryMappedFil
 # bnYtc2ExJzAlBgNVBAMTHkdsb2JhbFNpZ24gQ29kZVNpZ25pbmcgQ0EgLSBHMgIS
 # ESFgd9/aXcgt4FtCBtsrp6UyMAkGBSsOAwIaBQCgeDAYBgorBgEEAYI3AgEMMQow
 # CKACgAChAoAAMBkGCSqGSIb3DQEJAzEMBgorBgEEAYI3AgEEMBwGCisGAQQBgjcC
-# AQsxDjAMBgorBgEEAYI3AgEVMCMGCSqGSIb3DQEJBDEWBBSlURHW96Xz0eiie0X4
-# AcrXNP92FzANBgkqhkiG9w0BAQEFAASCAQAcUnwtbseoo96yhDYeM3Va2skbWuj4
-# 3oZVTnbcumH6m6n4O4l8bhKCI91eTTaWsuMzLkBfuaG4JSkZWsN1ol/EyEEpU5n8
-# VDzXUtkpJdgd+EASDJ/zhcf+hZJI5RXcD9GT3vFW29OM7rAMK5igU/JQTpHNJx/O
-# w72iQeEzJHlehgxaoggwLvMqxI6smY8RKUkvaQyzVIW5xK+9fg1E7/DVMIanq3TL
-# eHDcAeyhsw9Mho0+MfU14tg+H+HfcgtDDo0yJ5xYX+WxixiEnKiYmPg71PD1mz3y
-# vB6s/TD0wmtAvDGZSaVm2QGaopy//u5ngqLD4P9UHHCgBP5sFptjQSIMoYICojCC
+# AQsxDjAMBgorBgEEAYI3AgEVMCMGCSqGSIb3DQEJBDEWBBSmGb9gOR1ADN1aIwZk
+# e8iwWFWlhjANBgkqhkiG9w0BAQEFAASCAQCaAft1GxxSfXwJ2RcUUsuoEKwf1ryu
+# /XOUTs4VbSLvA59di63FDTe5TUqukOP2/6yfMm/r/4hqfXQ4yM5TNqSV8OPN5GaY
+# Ep3ircLlUBWAZzsvIx7/u8bBKGp1VUVtoIwL0hVjFLgeIM4PW7KnioA6Z3/NfbbZ
+# dvSphCV81mrlZ57sjmF/pYqGfV9LMIxO6FMkMczDAGjI+QogaSbrFjXd3+WuCkaq
+# QvYkAEmAo0rmvZBn1ppfEZYCUvSAGNTWPdkRdRWY37Xz8WHM1I6hGlMrkFGlq4ZM
+# 4G6zRJDQTFdaF2UG9P15M3PncVvqvAUYrlCNEkC5vQyCvpBx2EhGToBAoYICojCC
 # Ap4GCSqGSIb3DQEJBjGCAo8wggKLAgEBMGgwUjELMAkGA1UEBhMCQkUxGTAXBgNV
 # BAoTEEdsb2JhbFNpZ24gbnYtc2ExKDAmBgNVBAMTH0dsb2JhbFNpZ24gVGltZXN0
 # YW1waW5nIENBIC0gRzICEhEhQFwfDtJYiCvlTYaGuhHqRTAJBgUrDgMCGgUAoIH9
-# MBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTE0MTEy
-# NTE2MjU0OVowIwYJKoZIhvcNAQkEMRYEFOQZPkFfKyDsEgiY4qu0bRDjsCCwMIGd
+# MBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTE0MTIw
+# MjA4NDAzNVowIwYJKoZIhvcNAQkEMRYEFGabs51jDFjAWJ02gT+8/rJN0J7uMIGd
 # BgsqhkiG9w0BCRACDDGBjTCBijCBhzCBhAQUjOafUBLh0aj7OV4uMeK0K947NDsw
 # bDBWpFQwUjELMAkGA1UEBhMCQkUxGTAXBgNVBAoTEEdsb2JhbFNpZ24gbnYtc2Ex
 # KDAmBgNVBAMTH0dsb2JhbFNpZ24gVGltZXN0YW1waW5nIENBIC0gRzICEhEhQFwf
-# DtJYiCvlTYaGuhHqRTANBgkqhkiG9w0BAQEFAASCAQBFQy7Ivmfn084gplhQNOSe
-# yxKW1W5ADqIJqYGE3KEwd2wAOaiza6PRRQUZUBOBmkbGqX0SiRSVf9ORJ+Skshu4
-# 0N2gBoUg5VDukqkuDhahN3b+xBxVfz8otyzmLIIJp7bOI858i8gYM6YnE71bLz7W
-# g0EG/HrDWktxCWMkgIcyyOlGgPrEKnx9hrZ6ScG8Qz5q7E8eV6F5DxR2/1aof4K3
-# vlulrCX4np2iGwPGV5JOYud4f2JKtIqX32y8xtdEfRXgc8T9s/lB/9KegOWzk649
-# PWepsQCm29TJ33GOh+S+PROCGFsr+Tn5SSh2gLD5KnAPlOo77uDPMKcNDDjt+070
+# DtJYiCvlTYaGuhHqRTANBgkqhkiG9w0BAQEFAASCAQB5B6yvwz4/Ebp7eJfBrJzA
+# 6nAfsb0E+P20x3vBJmX0bKd9BsRggMbxo+k5z0mFyhVGGd2MF34loQn0vqjtbSTJ
+# 1wsJuhaYI9cZDm4btqP8iaPmSRJ5kYxRs0PbJfwsIX6hskp329Q7mUcsrIBRJZ/W
+# iiod8Gb+z9fi5BhSf3K6qE4JdyFlVq5seh5a69LTepx6jf6qoOUAN6sihWJTgGr1
+# XMS60242gqHRB4v2Fu8ORz2wafwlpJLIiQQwKBgycjcMDhtpGZeIs6HfEQ3ivj6o
+# N/KWDiTGkYM8ieM9VX6jelCJhuKzereV6j4Yq1FUQ5YozEbtALyvqxxmvoNgGq96
 # SIG # End signature block

@@ -50,23 +50,28 @@ See module manifest for dependencies and further requirements.
 
 Param 
 (
+	# Specifies the name of the memory mapped file
 	[Parameter(Mandatory = $true, Position = 0, ParameterSetName = 'write')]
 	[alias("m")]
 	[alias("map")]
 	[string] $MapName
 	, 
+	# Specifies the string content to write to the memory mapped file
 	[Parameter(Mandatory = $true, Position = 1, ParameterSetName = 'write')]
 	[alias("c")]
 	[string] $Content
 	, 
+	# Speficies the maximum size of the memory mapped file
 	[Parameter(Mandatory = $false, Position = 2, ParameterSetName = 'write')]
 	[alias("s")]
 	[int] $Size = $Content.Length +4 # account for leading [int]
 	,
+	# Specifies if the memory mapped file should reside in the global namespace
 	[Parameter(Mandatory = $false, Position = 3, ParameterSetName = 'write')]
 	[alias("g")]
 	[switch] $Global = $false
 	, 
+	# Specifies a handle to a memory mapped file to be closed
 	[Parameter(Mandatory = $false, ParameterSetName = 'close')]
 	[System.IO.MemoryMappedFiles.MemoryMappedFile] $Close
 )
@@ -188,8 +193,8 @@ if($MyInvocation.ScriptName) { Export-ModuleMember -Function Set-MemoryMappedFil
 # SIG # Begin signature block
 # MIIW3AYJKoZIhvcNAQcCoIIWzTCCFskCAQExCzAJBgUrDgMCGgUAMGkGCisGAQQB
 # gjcCAQSgWzBZMDQGCisGAQQBgjcCAR4wJgIDAQAABBAfzDtgWUsITrck0sYpfvNR
-# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUYejMxgLoRPKA//JrLDnDVAZM
-# VgGgghGYMIIEFDCCAvygAwIBAgILBAAAAAABL07hUtcwDQYJKoZIhvcNAQEFBQAw
+# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUP2kN6mvozsjQTisI7mLOaCOJ
+# dqCgghGYMIIEFDCCAvygAwIBAgILBAAAAAABL07hUtcwDQYJKoZIhvcNAQEFBQAw
 # VzELMAkGA1UEBhMCQkUxGTAXBgNVBAoTEEdsb2JhbFNpZ24gbnYtc2ExEDAOBgNV
 # BAsTB1Jvb3QgQ0ExGzAZBgNVBAMTEkdsb2JhbFNpZ24gUm9vdCBDQTAeFw0xMTA0
 # MTMxMDAwMDBaFw0yODAxMjgxMjAwMDBaMFIxCzAJBgNVBAYTAkJFMRkwFwYDVQQK
@@ -287,25 +292,25 @@ if($MyInvocation.ScriptName) { Export-ModuleMember -Function Set-MemoryMappedFil
 # bnYtc2ExJzAlBgNVBAMTHkdsb2JhbFNpZ24gQ29kZVNpZ25pbmcgQ0EgLSBHMgIS
 # ESFgd9/aXcgt4FtCBtsrp6UyMAkGBSsOAwIaBQCgeDAYBgorBgEEAYI3AgEMMQow
 # CKACgAChAoAAMBkGCSqGSIb3DQEJAzEMBgorBgEEAYI3AgEEMBwGCisGAQQBgjcC
-# AQsxDjAMBgorBgEEAYI3AgEVMCMGCSqGSIb3DQEJBDEWBBRIVBKjP54DUIhcnSUv
-# BAo4KQHb6zANBgkqhkiG9w0BAQEFAASCAQAIhoEK30UKUVgsbKEYZujIopHdR/tA
-# jxqRKhTjF80DZwKLevfc6Mce/1pPHSvlKAUffTPCOGtCubmQddstPNH6G+0xXePr
-# aNcRalopNv1oSWigqbxH1B9V6jXJusUmSZfXolWnP6Ur3uBw4nxk/GdIV1QZFqMe
-# nbs7uAlGT/vHeAS/kc6U4L6agNbjaol8GaMcuV7zufD96dOpgLAVLOFGgq2zzcyO
-# vuny8d278gerX+peHDZtXiu01AEPPE1b1SbXHWKSm+68LLM6wZcLVSf5utD0U4Dj
-# WMv2dT5btZ5l/ZNOIsV3jtcwz1BNdct+Zl/h3Ijx2blsBatM9COuqdNXoYICojCC
+# AQsxDjAMBgorBgEEAYI3AgEVMCMGCSqGSIb3DQEJBDEWBBRNpGw2excaVnaW/QR6
+# TMe7rJ6mKjANBgkqhkiG9w0BAQEFAASCAQB3PHcNTlWWC4HIYsKCWQFpcQV3hbzH
+# EniLA8V4KavtVv1GnGJz1QpsztPXnpU6cweNP6jkAD8ySHSco9h1jOS4fFVCZKaC
+# lMiSWE4ZVRguUy5Yf6/fzMHuyVAGv7zPKslV6LTD0EtzR4k9ghxo/X8p7WzGWEsw
+# J76QXaDUDa43vbnKnsD887CGnDqIcR6n9ndRhqXgCwnXE4gIX0lStah7NFlo7ZAW
+# hYiEU9Pf5J7HpEPploA9Gt5BaO7dyIoBM5EHDnHzxytbkCV6us76hQS/yhUJBqJJ
+# qWVWYNmfbDlBh9x6ANm0l+TmRiJ5L6lBwlV5XorVDAHhT+b8qkj3/DRKoYICojCC
 # Ap4GCSqGSIb3DQEJBjGCAo8wggKLAgEBMGgwUjELMAkGA1UEBhMCQkUxGTAXBgNV
 # BAoTEEdsb2JhbFNpZ24gbnYtc2ExKDAmBgNVBAMTH0dsb2JhbFNpZ24gVGltZXN0
 # YW1waW5nIENBIC0gRzICEhEhQFwfDtJYiCvlTYaGuhHqRTAJBgUrDgMCGgUAoIH9
-# MBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTE0MTEy
-# NTE2MjU1MFowIwYJKoZIhvcNAQkEMRYEFGRaT7CHiZn4M/KQazFhZyU6NjyBMIGd
+# MBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTE0MTIw
+# MjEwNDAwMlowIwYJKoZIhvcNAQkEMRYEFC1vHOLhM0SiQQdFWlRAcRT+WhvkMIGd
 # BgsqhkiG9w0BCRACDDGBjTCBijCBhzCBhAQUjOafUBLh0aj7OV4uMeK0K947NDsw
 # bDBWpFQwUjELMAkGA1UEBhMCQkUxGTAXBgNVBAoTEEdsb2JhbFNpZ24gbnYtc2Ex
 # KDAmBgNVBAMTH0dsb2JhbFNpZ24gVGltZXN0YW1waW5nIENBIC0gRzICEhEhQFwf
-# DtJYiCvlTYaGuhHqRTANBgkqhkiG9w0BAQEFAASCAQB1VZoio9hwK/Fb+leJFQcg
-# NcdCc8K6B4JmU1pXcoPswjvu4FBQZCHZ/p3kcP/M/1b14UyOe/s2IkRps2LHvlBH
-# PNCDl684B7NNwedydeQ7MEPISNpxeeKjtedZ4A7ys3qlAgurmAOowLRiVwFpA8IP
-# TIqF5XtzK7kvx2tT5TutsdPvIdTWktUJRaDuQtftyEwsJoIjOh4YzFrLWBFw2gj1
-# RA+6veEmFdNGEZjtRuSTELJKallicjtYLQODsOhEzj8uwoMBEeuubqF7Yku0TERl
-# /NPzkH+bwkuAw5xNWSdEOL+GrOvbWfJ/9vDFtwfzW1C49vGu9fQkyYapBKg3Ds37
+# DtJYiCvlTYaGuhHqRTANBgkqhkiG9w0BAQEFAASCAQBwHdcBTGDLr7H7CIq3iEg3
+# 1XKbx0fNv74xbO4dtL+5q5gujYl+NlbTgoPtxXq1gNGVKa8AQOQbnyhvjcuDjg4I
+# jhSo2KSZyBE17qxlSr7KH+G1i5jKvMvW4sdO6mVIljA+6o2lTe92DHwfAz2Xtwsx
+# x3PMmTgEju5Xk/DOC3T1MXsa3mJvo5QxMmGnj9p5t4NNz4trmRC6+06yr0krLGX9
+# BlJk4npUujbMMsVRx+iUy9mHZQ+Kxq/ZErUHSsXisAbYdgLO/fl3JeBkrfdlPgNT
+# yp0t6YnNcdwpFBE4od5RUTbTooEMvVGNSwowE9DFFft1xsYLG9U2Uza+dr6IFunh
 # SIG # End signature block

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>biz.dfch.PS.System.IO</id>
+    <version>1.0.1</version>
+    <title>biz.dfch.PS.System.IO</title>
+    <authors>d-fens GmbH</authors>
+    <owners>Ronald Rink</owners>
+    <licenseUrl>https://github.com/dfch/biz.dfch.PS.System.IO/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/dfch/biz.dfch.PS.System.IO</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/dfch/fragments/master/logo-32x32.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>biz.dfch.PS.System.IO
+=====================
+
+Module: biz.dfch.PS.System.IO
+
+d-fens GmbH, General-Guisan-Strasse 6, CH-6300 Zug, Switzerland
+
+This Microsoft PowerShell module contains Cmdlets to perform read and write actions to memory mapped files.
+
+You can also download this module via [NuGet](http://nuget.org) with [Install-Package biz.dfch.PS.System.IO](https://www.nuget.org/packages/biz.dfch.PS.System.IO/)
+
+See http://d-fens.ch/2014/11/25/module-biz-dfch-ps-system-io/
+
+See https://github.com/dfch/biz.dfch.PS.System.IO/wiki for a detailed description on how to use the Cmdlets in this module.
+</description>
+    <summary>This Microsoft PowerShell module contains Cmdlets to perform read and write actions to memory mapped files.</summary>
+    <releaseNotes>20141202</releaseNotes>
+    <copyright>(c) 2014 d-fens GmbH</copyright>
+    <language>en-US</language>
+    <tags>PowerShell dfch MemoryMappedFile</tags>
+    <dependencies>
+      <dependency id="biz.dfch.PS.System.Logging" version="1.0.3" />
+    </dependencies>
+  </metadata>
+  <files xmlns="">
+    <file src="biz.dfch.PS.System.IO.psm1" target="biz.dfch.PS.System.IO.psm1" />
+    <file src="biz.dfch.PS.System.IO.psd1" target="biz.dfch.PS.System.IO.psd1" />
+    <file src="biz.dfch.PS.System.IO.xml" target="biz.dfch.PS.System.IO.xml" />
+    <file src="Get-MemoryMappedFileString.ps1" target="Get-MemoryMappedFileString.ps1" />
+    <file src="Set-MemoryMappedFileString.ps1" target="Set-MemoryMappedFileString.ps1" />
+  </files>
+</package>
